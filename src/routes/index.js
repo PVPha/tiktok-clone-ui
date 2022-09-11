@@ -1,5 +1,5 @@
 //import layouts
-import { UploadLayout } from "~/pages/Layouts";
+import { UploadLayout } from "~/components/Layouts";
 //import pages
 import Following from "~/pages/Following";
 import Home from "~/pages/Home";

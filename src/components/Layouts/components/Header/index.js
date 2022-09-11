@@ -3,6 +3,10 @@ import {
   faCircleXmark,
   faMagnifyingGlass,
   faSpinner,
+  faEllipsisVertical,
+  faEarthAsia,
+  faQuestionCircle,
+  faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
 import Styles from "./Header.module.scss";
@@ -12,10 +16,25 @@ import { useEffect, useState } from "react";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
+import Menu from "~/components/Popper/Menu";
 
 function Header() {
   const cx = classNames.bind(Styles);
-
+  const MENU_ITEM = [
+    {
+      icon: <FontAwesomeIcon icon={faEarthAsia} />,
+      title: "English",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faQuestionCircle} />,
+      title: "Feedback and help",
+      to: "Feedback",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faKeyboard} />,
+      title: "Keyboard shortcuts",
+    },
+  ];
   const [searchResult, setSearchResult] = useState([]);
   useEffect(() => {
     setInterval(() => {
@@ -58,6 +77,11 @@ function Header() {
         <div className={cx("actions")}>
           <Button text>Upload</Button>
           <Button primary>Login</Button>
+          <Menu items={MENU_ITEM}>
+            <button className={cx("menu")}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Menu>
         </div>
       </div>
     </div>

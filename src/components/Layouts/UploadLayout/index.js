@@ -1,4 +1,4 @@
-import Header from "~/pages/Layouts/components/Header";
+import Header from "~/components/Layouts/components/Header";
 
 function UploadLayout({ children }) {
   return (
