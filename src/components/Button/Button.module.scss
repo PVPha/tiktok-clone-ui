@@ -12,6 +12,7 @@
     border: 1px solid transparent;
     background-color: var(--white);
     user-select: none;
+    cursor: pointer;
 
     + .wrapper{
         margin-left: 8px;

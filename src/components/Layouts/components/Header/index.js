@@ -12,7 +12,7 @@ import classNames from "classnames/bind";
 import Styles from "./Header.module.scss";
 import images from "~/assets/image";
 import Tippy from "@tippyjs/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
@@ -20,10 +20,25 @@ import Menu from "~/components/Popper/Menu";
 
 function Header() {
   const cx = classNames.bind(Styles);
-  const MENU_ITEM = [
+  const MENU_ITEMS = [
     {
       icon: <FontAwesomeIcon icon={faEarthAsia} />,
       title: "English",
+      sub: {
+        title: "Language",
+        data: [
+          {
+            type: "language",
+            code: "en",
+            title: "English",
+          },
+          {
+            type: "language",
+            code: "vi",
+            title: "Việt Nam",
+          },
+        ],
+      },
     },
     {
       icon: <FontAwesomeIcon icon={faQuestionCircle} />,
@@ -36,11 +51,10 @@ function Header() {
     },
   ];
   const [searchResult, setSearchResult] = useState([]);
-  useEffect(() => {
-    setInterval(() => {
-      setSearchResult([]);
-    }, 2000);
-  }, []);
+
+  const handleChange = (data) => {
+    console.log(data);
+  };
 
   return (
     <div className={cx("wrapper")}>
@@ -77,7 +91,7 @@ function Header() {
         <div className={cx("actions")}>
           <Button text>Upload</Button>
           <Button primary>Login</Button>
-          <Menu items={MENU_ITEM}>
+          <Menu items={MENU_ITEMS} onChange={handleChange}>
             <button className={cx("menu")}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>

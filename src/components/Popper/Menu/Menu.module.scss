@@ -7,18 +7,46 @@
 
     .menu-item{
         margin-left: 0;
-        width: 100%;
-        justify-content: flex-start;
-        padding: 9px 16px;
     }
+}
 
-    .menu-item:hover{
+.menu-popper{
+    padding-bottom: 8px;
+}
+
+//menu-item
+.menu-item{
+    width: 100%;
+    justify-content: flex-start;
+    padding: 9px 16px;
+
+    &:hover{
         background: rgba(22, 24, 35, 0.03);
         border-radius: 0;
     }
 }
 
-
-.menu-popper{
-    padding-bottom: 8px;
+//menu header
+.header-menu{
+    position: relative;
+    min-height: 50px;
+    margin-top: -8px;
+    cursor: pointer;
 }
+
+.header-back-btn{
+    height: 100%;
+    width: 50px;
+    font-size: 2rem;
+    padding: 13px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.header-title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
