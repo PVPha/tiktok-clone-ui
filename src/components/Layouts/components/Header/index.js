@@ -1,8 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleXmark,
-  faMagnifyingGlass,
-  faSpinner,
   faEllipsisVertical,
   faEarthAsia,
   faQuestionCircle,
@@ -16,16 +13,13 @@ import {
 import classNames from "classnames/bind";
 import Styles from "./Header.module.scss";
 import images from "~/assets/image";
-import TippyHeadless from "@tippyjs/react/headless";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
-
-import { Wrapper as PopperWrapper } from "~/components/Popper";
-import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
 import Image from "~/components/Image";
 import { InboxIcon, MessageIcon } from "~/components/Icons";
+import Search from "../Search";
 
 function Header() {
   const cx = classNames.bind(Styles);
@@ -94,30 +88,7 @@ function Header() {
           <img src={images.logo} alt="tiktok" />
         </div>
 
-        <TippyHeadless
-          interactive={true}
-          render={(attrs) => (
-            <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <div className={cx("search-title")}>Account</div>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx("search")}>
-            <input placeholder="Search accounts and videos" />
-            <button className={cx("clear-btn")}>
-              <FontAwesomeIcon icon={faCircleXmark} />
-            </button>
-            <FontAwesomeIcon className={cx("loading")} icon={faSpinner} />
-            <button className={cx("search-btn")}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </div>
-        </TippyHeadless>
+        <Search />
 
         <div className={cx("actions")}>
           <Button
@@ -132,6 +103,7 @@ function Header() {
               <Tippy delay={[0, 200]} content="Message" placement="bottom">
                 <button className={cx("user-btn", "btn-messages")}>
                   <MessageIcon />
+                  <span className={cx("quantity")}>1</span>
                 </button>
               </Tippy>
               <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
