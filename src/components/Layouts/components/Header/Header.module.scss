@@ -145,5 +145,13 @@ input:not(:placeholder-shown) ~ .search-btn{
     margin-left: 24px;
 }
 
+.btn-messages{
+    position: relative;
+
+    &::after{
+        content: '';
+    }
+}
+
 
 

@@ -24,6 +24,8 @@ import { Wrapper as PopperWrapper } from "~/components/Popper";
 import AccountItem from "~/components/AccountItem";
 import Button from "~/components/Button";
 import Menu from "~/components/Popper/Menu";
+import Image from "~/components/Image";
+import { InboxIcon, MessageIcon } from "~/components/Icons";
 
 function Header() {
   const cx = classNames.bind(Styles);
@@ -129,12 +131,12 @@ function Header() {
             <>
               <Tippy delay={[0, 200]} content="Message" placement="bottom">
                 <button className={cx("user-btn", "btn-messages")}>
-                  <img src={images.messageIcon} alt="icon-message" />
+                  <MessageIcon />
                 </button>
               </Tippy>
               <Tippy delay={[0, 200]} content="Inbox" placement="bottom">
                 <button className={cx("user-btn", "btn-inbox")}>
-                  <img src={images.inboxIcon} alt="icon-inbox" />
+                  <InboxIcon />
                 </button>
               </Tippy>
             </>
@@ -147,7 +149,7 @@ function Header() {
             onChange={handleChange}
           >
             {currentUser ? (
-              <img
+              <Image
                 className={cx("avatar")}
                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-aiso/e4c61c54794b26f4ab3184c1a32c1483~c5_720x720.jpeg?x-expires=1663174800&x-signature=D0THN%2BHqNToHeQMnRhZ7Pyk0jXs%3D"
                 alt="Phadz"
