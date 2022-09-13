@@ -21,7 +21,7 @@ const publicRoute = [
     layout: UploadLayout,
   },
   {
-    path: "/Profile",
+    path: "/@:nickname",
     component: Profile,
     layout: null,
   },
