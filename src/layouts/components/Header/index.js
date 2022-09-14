@@ -12,7 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
 import Styles from "./Header.module.scss";
-import configRoute from "~/config/routes";
+import config from "~/config";
 import images from "~/assets/image";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
@@ -86,7 +86,7 @@ function Header() {
   return (
     <div className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <Link to={configRoute.home} className={cx("logo")}>
+        <Link to={config.routes.home} className={cx("logo")}>
           <img src={images.logo} alt="tiktok" />
         </Link>
 

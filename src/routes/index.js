@@ -1,6 +1,6 @@
-import configRoute from "~/config/routes";
+import config from "~/config";
 //import layouts
-import { UploadLayout } from "~/components/Layouts";
+import { UploadLayout } from "~/layouts";
 //import pages
 import Following from "~/pages/Following";
 import Home from "~/pages/Home";
@@ -9,20 +9,20 @@ import Profile from "~/pages/Profile";
 //public route
 const publicRoute = [
   {
-    path: configRoute.home,
+    path: config.routes.home,
     component: Home,
   },
   {
-    path: configRoute.following,
+    path: config.routes.following,
     component: Following,
   },
   {
-    path: configRoute.upload,
+    path: config.routes.upload,
     component: Upload,
     layout: UploadLayout,
   },
   {
-    path: configRoute.profile,
+    path: config.routes.profile,
     component: Profile,
     layout: null,
   },
