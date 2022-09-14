@@ -7,7 +7,12 @@ import Header from "./Header";
 import { useState } from "react";
 const cx = classNames.bind(Styles);
 const defaultFN = () => {};
-function Menu({ children, items = [], onChange = defaultFN }) {
+function Menu({
+  children,
+  items = [],
+  hideOnClick = false,
+  onChange = defaultFN,
+}) {
   const [history, setHistory] = useState([{ data: items }]);
   const currentMenu = history[history.length - 1];
   const renderItem = () => {
@@ -32,34 +37,39 @@ function Menu({ children, items = [], onChange = defaultFN }) {
   };
 
   return (
-    <Tippy
-      delay={[0, 700]}
-      offset={[15, 5]}
-      interactive
-      placement={"bottom-end"}
-      onHide={() => {
-        setHistory((prev) => {
-          return prev.slice(0, 1);
-        });
-      }}
-      render={(attrs) => (
-        <div className={cx("wrapper")} tabIndex="-1" {...attrs}>
-          <PopperWrapper className={cx("menu-popper")}>
-            {history.length > 1 && (
-              <Header
-                title={currentMenu.title}
-                onBack={() => {
-                  setHistory(history.slice(0, history.length - 1));
-                }}
-              />
-            )}
-            {renderItem()}
-          </PopperWrapper>
-        </div>
-      )}
-    >
-      {children}
-    </Tippy>
+    // Using a wrapper <div> or <span> tag around the reference element solves
+    //this by creating a new parentNode context.
+    <div>
+      <Tippy
+        hideOnClick={hideOnClick}
+        delay={[0, 700]}
+        offset={[15, 5]}
+        interactive
+        placement={"bottom-end"}
+        onHide={() => {
+          setHistory((prev) => {
+            return prev.slice(0, 1);
+          });
+        }}
+        render={(attrs) => (
+          <div className={cx("wrapper")} tabIndex="-1" {...attrs}>
+            <PopperWrapper className={cx("menu-popper")}>
+              {history.length > 1 && (
+                <Header
+                  title={currentMenu.title}
+                  onBack={() => {
+                    setHistory(history.slice(0, history.length - 1));
+                  }}
+                />
+              )}
+              <div className={cx("menu-body")}>{renderItem()}</div>
+            </PopperWrapper>
+          </div>
+        )}
+      >
+        {children}
+      </Tippy>
+    </div>
   );
 }
 

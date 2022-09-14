@@ -1,3 +1,4 @@
+import configRoute from "~/config/routes";
 //import layouts
 import { UploadLayout } from "~/components/Layouts";
 //import pages
@@ -8,20 +9,20 @@ import Profile from "~/pages/Profile";
 //public route
 const publicRoute = [
   {
-    path: "/",
+    path: configRoute.home,
     component: Home,
   },
   {
-    path: "/Following",
+    path: configRoute.following,
     component: Following,
   },
   {
-    path: "/Upload",
+    path: configRoute.upload,
     component: Upload,
     layout: UploadLayout,
   },
   {
-    path: "/@:nickname",
+    path: configRoute.profile,
     component: Profile,
     layout: null,
   },
