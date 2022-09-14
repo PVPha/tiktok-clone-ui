@@ -8,6 +8,7 @@ import AccountItem from "~/components/AccountItem";
 import { useEffect, useRef, useState } from "react";
 import { SearchIcon } from "~/components/Icons";
 import { useDebounce } from "~/hooks";
+import * as searchService from "~/services/searchService";
 
 const cx = classNames.bind(styles);
 
@@ -21,25 +22,19 @@ function Search() {
   const debounce = useDebounce(searchValue, 500);
 
   useEffect(() => {
-    console.log(debounce);
     if (!debounce.trim()) {
       setSearchResult([]);
       return;
     }
     setLoading(true);
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debounce
-      )}&type=less`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(true);
-      });
+
+    const fetchAPI = async () => {
+      const result = await searchService.search(debounce);
+      setSearchResult(result);
+      setLoading(false);
+    };
+
+    fetchAPI();
   }, [debounce]);
 
   const handleClear = () => {
