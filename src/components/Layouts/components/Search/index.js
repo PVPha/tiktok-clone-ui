@@ -28,7 +28,9 @@ function Search() {
     }
     setLoading(true);
     fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${debounce}&type=less`
+      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
+        debounce
+      )}&type=less`
     )
       .then((res) => res.json())
       .then((res) => {
